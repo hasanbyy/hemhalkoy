@@ -29,7 +29,7 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet">
   <style>
-    *,
+*,
     *::before,
     *::after {
       box-sizing: border-box;
@@ -1623,12 +1623,18 @@
       margin-top: 3px;
       cursor: pointer;
       flex-shrink: 0;
+      width: 24px;
+      height: 24px;
     }
 
     .kvkk-consent label {
       color: rgba(245, 237, 224, 0.45);
       line-height: 1.5;
       cursor: pointer;
+      display: inline-block;
+      padding-left: 8px;
+      padding-top: 2px;
+      width: calc(100% - 32px);
     }
 
     .kvkk-consent label a {
@@ -1867,14 +1873,11 @@
     }
 
     @media (max-width: 768px) {
-
-      /* Reduce reveal animation on mobile */
       .reveal {
         transform: translateY(12px);
         transition: opacity 0.4s ease, transform 0.4s ease;
       }
 
-      /* Reduce section paddings */
       .manifesto,
       .pillars,
       .not-commune,
@@ -1896,7 +1899,6 @@
         gap: 24px;
       }
 
-      /* Hero footer: 2-column grid */
       .hero-footer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -1958,7 +1960,6 @@
         padding: 20px;
       }
 
-      /* Touch targets */
       .btn-primary,
       .btn-ghost,
       .faq-summary,
@@ -1968,9 +1969,20 @@
         align-items: center;
       }
 
-      /* Sticky CTA bottom padding */
       .cta-section {
         padding-bottom: clamp(80px, 12vw, 120px) !important;
+      }
+
+      .cta-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .cta-actions .btn-dark, 
+      .cta-actions .btn-primary {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
       }
     }
 
@@ -1996,8 +2008,12 @@
 
     @media (max-width: 480px) {
       .hero-footer {
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .hero-footer .stat:last-child {
+        grid-column: span 1;
       }
 
       .stat-num {
@@ -2026,11 +2042,10 @@
       .pillar-grid,
       .problem-stats-grid,
       .science-points {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        grid-template-columns: 1fr;
+        gap: 16px;
       }
 
-      /* Compact cards for 2-col on small screens */
       .pillar,
       .who-card,
       .space-card,
@@ -2043,15 +2058,15 @@
       .who-card h3,
       .space-card h3,
       .research-card h3 {
-        font-size: 14px;
+        font-size: 16px;
       }
 
       .pillar p,
       .who-card p,
       .space-card p,
       .research-card p {
-        font-size: 12px;
-        line-height: 1.5;
+        font-size: 14px;
+        line-height: 1.6;
       }
 
       .pillar-num {
@@ -2063,14 +2078,54 @@
         padding: 3px 6px;
       }
 
-      #email-capture {
-        width: 160px;
+      .email-bar-form {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .email-bar-form input {
+        width: 100% !important;
+        padding: 14px 16px;
+      }
+      
+      .email-bar-form button {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid rgba(245, 237, 224, 0.12);
+        padding: 14px 20px;
+      }
+
+      #email-capture, #email-capture-top {
+        width: 100% !important;
       }
 
       .sticky-cta a {
         width: 100%;
         justify-content: center;
         padding: 14px 24px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid .wide {
+        grid-column: span 1;
+      }
+      .gallery-grid .tall {
+        grid-row: span 1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .vagal-glow {
+        animation: none !important;
+        display: none;
+      }
+      *, *::before, *::after {
+        animation-play-state: paused !important;
+        transition: none !important;
       }
     }
   </style>
@@ -2801,10 +2856,10 @@
 
     <div class="cta-actions">
       <div class="manyetik-alan">
-        <a href="https://forms.gle/hkqR1rVkSs4y1pYy7" target="_blank" rel="noopener" class="btn-dark manyetik-buton has-ripple">Temel Ankete Katıl — 6 dk</a>
+        <a href="https://forms.gle/oTWHunADcZfpzyee7" target="_blank" rel="noopener" class="btn-dark manyetik-buton has-ripple">Temel Ankete Katıl — 6 dk</a>
       </div>
       <div class="manyetik-alan">
-        <a href="https://forms.gle/beMFGoYo9fCAMWau8" target="_blank" rel="noopener" class="btn-dark manyetik-buton has-ripple" style="background-color: var(--moss);">Detay Anketini Doldur</a>
+        <a href="https://forms.gle/3x9ShAjudXtTLorx8" target="_blank" rel="noopener" class="btn-dark manyetik-buton has-ripple" style="background-color: var(--moss);">Detay Anketini Doldur</a>
       </div>
 
       <form name="email-bottom" method="POST" data-netlify="true" class="cta-form-group manyetik-alan" style="padding: 0; margin: 0; background: transparent;" onsubmit="return handleEmailCapture(event)">
@@ -3121,23 +3176,27 @@
       });
     });
 
-    /* ─── Manyetik Buton & 3D Kart ─── */
-    document.querySelectorAll('.manyetik-buton').forEach(btn => {
-      btn.addEventListener('mousemove', (e) => {
-        const rect = btn.getBoundingClientRect(); const x = e.clientX - rect.left - rect.width / 2; const y = e.clientY - rect.top - rect.height / 2;
-        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-      });
-      btn.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0, 0)'; });
-    });
+    /* ─── Manyetik Buton & 3D Kart (Mobil Kontrollü) ─── */
+    const isTouchDeviceForAnim = window.matchMedia("(max-width: 768px)").matches || 'ontouchstart' in window;
 
-    document.querySelectorAll('.egilen-kart').forEach(kart => {
-      kart.addEventListener('mousemove', (e) => {
-        const rect = kart.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-        const dondurX = ((y - rect.height / 2) / (rect.height / 2)) * -5; const dondurY = ((x - rect.width / 2) / (rect.width / 2)) * 5;
-        kart.style.transform = `perspective(1000px) rotateX(${dondurX}deg) rotateY(${dondurY}deg) scale3d(1.02, 1.02, 1.02)`;
+    if (!isTouchDeviceForAnim) {
+      document.querySelectorAll('.manyetik-buton').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect(); const x = e.clientX - rect.left - rect.width / 2; const y = e.clientY - rect.top - rect.height / 2;
+          btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+        btn.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0, 0)'; });
       });
-      kart.addEventListener('mouseleave', () => { kart.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`; });
-    });
+
+      document.querySelectorAll('.egilen-kart').forEach(kart => {
+        kart.addEventListener('mousemove', (e) => {
+          const rect = kart.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+          const dondurX = ((y - rect.height / 2) / (rect.height / 2)) * -5; const dondurY = ((x - rect.width / 2) / (rect.width / 2)) * 5;
+          kart.style.transform = `perspective(1000px) rotateX(${dondurX}deg) rotateY(${dondurY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+        kart.addEventListener('mouseleave', () => { kart.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`; });
+      });
+    }
 
     /* ─── Paralaks Efekti & Scroll Reveal ─── */
     const paralaksElemanlari = document.querySelectorAll('[data-paralaks]');
