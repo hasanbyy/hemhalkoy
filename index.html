@@ -2119,13 +2119,24 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .vagal-glow {
-        animation: none !important;
-        display: none;
-      }
       *, *::before, *::after {
-        animation-play-state: paused !important;
+        animation: none !important;
         transition: none !important;
+      }
+      
+      /* Animasyonlar durdurulduğunda elemanların gizli kalmasını engeller */
+      nav, 
+      .hero-content, 
+      .hero-footer, 
+      .reveal, 
+      .kelime-animasyonu {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        visibility: visible !important;
+      }
+      
+      .vagal-glow {
+        display: none !important;
       }
     }
   </style>
