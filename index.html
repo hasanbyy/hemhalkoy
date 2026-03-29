@@ -133,13 +133,15 @@
     .gallery-item::before{content:'';position:absolute;inset:-20px;z-index:1;opacity:0;pointer-events:none;transition:opacity 0.5s ease;background:linear-gradient(rgba(26,60,90,0.8),rgba(26,60,90,0.8)),repeating-linear-gradient(transparent,transparent 19px,rgba(255,255,255,0.15) 20px),repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(255,255,255,0.15) 20px);mix-blend-mode:hard-light}
     .gallery-item:hover::before{opacity:1}
     .gallery-item:hover img{filter:grayscale(1) contrast(1.2) sepia(1) hue-rotate(180deg);transform:scale(1.05)}
-    .gallery-item .caption{position:absolute;bottom:0;left:0;right:0;padding:24px 20px 16px;background:linear-gradient(to top,rgba(26,21,16,0.9),transparent);opacity:0;transform:translateY(8px);transition:all 0.4s ease;z-index:2;pointer-events:none}
+    .gallery-item .caption{position:absolute;bottom:0;left:0;right:0;padding:24px 20px 16px;background:linear-gradient(to top,rgba(26,21,16,0.95) 60%,transparent);opacity:0;transform:translateY(8px);transition:all 0.4s ease;z-index:2;pointer-events:none}
+    .gallery-item .caption p{color:#ffffff;font-size:14px;font-weight:500;letter-spacing:0.03em;margin:0}
     .gallery-item:hover .caption{opacity:1;transform:translateY(0)}
     .caption h4{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--amber);font-weight:400;margin-bottom:4px}
     .caption p{font-size:12px;color:rgba(245,237,224,0.55);line-height:1.5}
-    .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:200000;justify-content:center;align-items:center}
+    .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:200000;justify-content:center;align-items:center;flex-direction:column}
     .lightbox.active{display:flex}
-    .lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border:2px solid rgba(196,98,45,0.15)}
+    .lightbox img{max-width:90vw;max-height:80vh;object-fit:contain;border:2px solid rgba(196,98,45,0.15)}
+    .lightbox-caption{color:rgba(245,237,224,0.85);font-family:'DM Sans',sans-serif;font-size:14px;letter-spacing:0.05em;margin-top:16px;text-align:center;min-height:20px}
     .lightbox-close{position:absolute;top:24px;right:32px;font-size:32px;color:rgba(245,237,224,0.5);background:none;border:none;transition:color 0.3s;cursor:pointer}
     .lightbox-close:hover{color:var(--cream)}
     .lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(245,237,224,0.5);font-size:64px;cursor:pointer;padding:0 24px;transition:color 0.3s;z-index:1;line-height:1}
@@ -156,7 +158,7 @@
     .space-tag{display:inline-block;margin-top:12px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(196,98,45,0.5);border:1px solid rgba(196,98,45,0.2);padding:3px 8px;pointer-events:none}
     .spaces-note{margin-top:48px;padding:28px 32px;background-color:rgba(196,98,45,0.06);border-left:2px solid rgba(196,98,45,0.3);font-size:13px;color:rgba(245,237,224,0.45);line-height:1.8;max-width:700px;position:relative;z-index:2}
     .spaces-note strong{color:rgba(245,237,224,0.7);font-weight:400}
-    .space-group-header{grid-column:1/-1;padding:32px 32px 12px;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,237,224,0.35);border-top:1px solid rgba(245,237,224,0.08);margin-top:16px}.space-group-header:first-child{border-top:none;margin-top:0;padding-top:0}
+    .space-group-header{grid-column:1/-1;padding:32px 32px 12px;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,237,224,0.85);border-top:1px solid rgba(245,237,224,0.08);margin-top:16px}.space-group-header:first-child{border-top:none;margin-top:0;padding-top:0}
     .who{background-color:var(--soil);padding:clamp(80px,12vw,160px) clamp(24px,6vw,80px);position:relative;z-index:2}
     .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
     .who-card{padding:40px;background-color:rgba(245,237,224,0.03);border-top:2px solid var(--ember);position:relative;transition:background-color 0.3s}
@@ -274,7 +276,7 @@
     .nav-overlay-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--cream);font-size:2rem;cursor:pointer}
     @media(min-width:768px){.navbar-links{display:flex}.hamburger{display:none}}
     @media(max-width:900px){.spaces-grid,.research-grid,.gallery-grid{grid-template-columns:repeat(2,1fr)}.who-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:768px){.pillars-header,.spaces-header{grid-template-columns:1fr;gap:24px}.who-grid{grid-template-columns:1fr}.hero-footer{gap:0;flex-wrap:nowrap;justify-content:space-between}.stat-num{font-size:28px}h1{font-size:clamp(28px,9vw,52px)}.hero-desc{font-size:15px}.manifesto-text{font-size:clamp(16px,5vw,32px)}.dict-inner{grid-template-columns:1fr}.cta-section h2{font-size:clamp(22px,6vw,48px)}.pillar p,.who-card p,.space-card p,.research-card p{font-size:14px}.faq-answer,.roadmap-desc{font-size:15px}.comparison-grid{grid-template-columns:1fr 1fr}.comp-col{padding:24px}.gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}.gallery-grid .wide{grid-column:span 1}.gallery-grid .tall{grid-row:span 1}.solar-path{width:min(90vw,100%);height:min(45vw,52%)}.sun-orb{width:48px;height:48px;box-shadow:0 0 44px 16px rgba(255,123,0,0.4)}}
+    @media(max-width:768px){.spaces-header h2{font-size:clamp(36px,9vw,52px)}.pillars-header,.spaces-header{grid-template-columns:1fr;gap:24px}.who-grid{grid-template-columns:1fr}.hero-footer{gap:0;flex-wrap:nowrap;justify-content:space-between}.stat-num{font-size:28px}h1{font-size:clamp(28px,9vw,52px)}.hero-desc{font-size:15px}.manifesto-text{font-size:clamp(16px,5vw,32px)}.dict-inner{grid-template-columns:1fr}.cta-section h2{font-size:clamp(22px,6vw,48px)}.pillar p,.who-card p,.space-card p,.research-card p{font-size:14px}.faq-answer,.roadmap-desc{font-size:15px}.comparison-grid{grid-template-columns:1fr 1fr}.comp-col{padding:24px}.gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}.gallery-grid .wide{grid-column:span 1}.gallery-grid .tall{grid-row:span 1}.solar-path{width:min(90vw,100%);height:min(45vw,52%)}.sun-orb{width:48px;height:48px;box-shadow:0 0 44px 16px rgba(255,123,0,0.4)}}
     @media(max-width:560px){.spaces-grid,.gallery-grid{grid-template-columns:repeat(2,1fr)}.research-grid{grid-template-columns:1fr}.email-bar{flex-direction:column;text-align:center;gap:12px}.email-bar-form input{width:180px}}
     @media(max-width:480px){.hero-footer{gap:0}.stat-num{font-size:24px}.nav-cta{display:none}.cta-group{flex-direction:column;align-items:center}.btn-primary{width:100%;text-align:center}.hero-desc{text-align:center}.pillar-grid,.problem-stats-grid,.science-points{grid-template-columns:repeat(2,1fr)}#email-capture{width:160px}h1{font-size:clamp(52px,14vw,80px);text-align:center}.hero-tag{justify-content:center;text-align:center}.solar-path{width:min(95vw,100%);height:min(48vw,52%);top:15%}.sun-orb{width:36px;height:36px;box-shadow:0 0 28px 10px rgba(255,123,0,0.35)}}
   </style>
@@ -493,14 +495,14 @@
       <span style="font-size:12px;color:rgba(245,237,224,0.3);letter-spacing:0.05em;display:block;margin-top:8px;">Tüm görseller yapay zeka ile üretilmiş vizyon tasarımlarıdır.</span>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item wide reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/kusbakisi-yerlesim.jpg" alt="Hemhal kuşbakışı görünüm" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/ev-bahce.jpg" alt="Ev ve bahçe" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/koy-sokagi.jpg" alt="Köy sokağı" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/dogal-oyun-alani.jpg" alt="Çocuk oyun alanı" loading="lazy"></div>
-      <div class="gallery-item tall reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/dogal-havuz.jpg" alt="Doğal havuz" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/ev-ic-mekan.jpg" alt="Ev iç mekan" loading="lazy"></div>
-      <div class="gallery-item reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/topluluk-sofrasi.jpg" alt="Topluluk sofrası" loading="lazy"></div>
-      <div class="gallery-item wide reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/seramik-atolye.jpg" alt="Seramik atölyesi" loading="lazy"></div>
+      <div class="gallery-item wide reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/kusbakisi-yerlesim.jpg" alt="Hemhal kuşbakışı görünüm" loading="lazy"><div class="caption"><p>Kuşbakışı yerleşim</p></div></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/ev-bahce.jpg" alt="Ev ve bahçe" loading="lazy"><div class="caption"><p>Ev ve bahçe</p></div></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/koy-sokagi.jpg" alt="Köy sokağı" loading="lazy"><div class="caption"><p>Köy sokağı</p></div></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/dogal-oyun-alani.jpg" alt="Çocuk oyun alanı" loading="lazy"><div class="caption"><p>Çocuk oyun alanı</p></div></div>
+      <div class="gallery-item tall reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/dogal-havuz.jpg" alt="Doğal havuz" loading="lazy"><div class="caption"><p>Doğal havuz</p></div></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/ev-ic-mekan.jpg" alt="Ev iç mekan" loading="lazy"><div class="caption"><p>Ev iç mekan</p></div></div>
+      <div class="gallery-item reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/topluluk-sofrasi.jpg" alt="Topluluk sofrası" loading="lazy"><div class="caption"><p>Topluluk sofrası</p></div></div>
+      <div class="gallery-item wide reveal" onclick="openLightbox(this)" tabindex="0"><img src="Medya/seramik-atolye.jpg" alt="Seramik atölyesi" loading="lazy"><div class="caption"><p>Seramik atölyesi</p></div></div>
     </div>
   </section>
 
@@ -508,6 +510,7 @@
     <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
     <button class="lightbox-prev" onclick="event.stopPropagation();prevImage()">&#8249;</button>
     <img id="lightbox-img" src="data:," alt="Büyük görsel">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
     <button class="lightbox-next" onclick="event.stopPropagation();nextImage()">&#8250;</button>
   </div>
 
@@ -944,16 +947,19 @@
     function openLightbox(el) {
       currentLightboxIndex = galleryItems.indexOf(el);
       document.getElementById('lightbox-img').src = el.querySelector('img').src;
+      document.getElementById('lightbox-caption').textContent = (el.querySelector('.caption p') || {}).textContent || '';
       document.getElementById('lightbox').classList.add('active');
     }
     function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
     function prevImage() {
       currentLightboxIndex = (currentLightboxIndex - 1 + galleryItems.length) % galleryItems.length;
       document.getElementById('lightbox-img').src = galleryItems[currentLightboxIndex].querySelector('img').src;
+      document.getElementById('lightbox-caption').textContent = (galleryItems[currentLightboxIndex].querySelector('.caption p') || {}).textContent || '';
     }
     function nextImage() {
       currentLightboxIndex = (currentLightboxIndex + 1) % galleryItems.length;
       document.getElementById('lightbox-img').src = galleryItems[currentLightboxIndex].querySelector('img').src;
+      document.getElementById('lightbox-caption').textContent = (galleryItems[currentLightboxIndex].querySelector('.caption p') || {}).textContent || '';
     }
     function handleLightboxClick(e) { if (e.target === document.getElementById('lightbox')) closeLightbox(); }
     document.addEventListener('keydown', function(e) {
