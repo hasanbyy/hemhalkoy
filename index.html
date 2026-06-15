@@ -89,7 +89,7 @@
     @keyframes rippleAnim{to{transform:scale(4);opacity:0}}
     .manyetik-alan{display:inline-block;padding:10px;margin:-10px}
     .manyetik-buton{transition:transform 0.3s cubic-bezier(0.25,1,0.5,1);will-change:transform;display:inline-block}
-    .egilen-kart{transition:transform 0.2s ease-out,box-shadow 0.35s ease,background-color 0.3s ease,border-color 0.3s ease;transform-style:preserve-3d;will-change:transform;position:relative}
+    .egilen-kart{transition:transform 0.2s ease-out,box-shadow 0.35s ease,background-color 0.3s ease,border-color 0.3s ease;transform-style:preserve-3d;position:relative}
     .egilen-kart::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity 0.4s ease;background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),rgba(196,98,45,0.07),transparent 65%);z-index:1}
     .egilen-kart:hover::after{opacity:1}
     .vagal-glow{position:absolute;top:50%;left:60%;transform:translate(-50%,-50%);width:44vw;height:44vw;border-radius:50%;background:radial-gradient(circle,rgba(196,98,45,0.06) 0%,transparent 58%);mix-blend-mode:multiply;animation:vagalBreathe 5.5s infinite ease-in-out;pointer-events:none;z-index:0}
@@ -133,6 +133,8 @@
     @media (prefers-reduced-motion: reduce){.breath-toggle{display:none!important}}
     .hamburger{background:none;border:none;color:var(--ink);cursor:pointer;padding:0.3rem;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:color 0.3s,transform 0.3s}
     .hamburger:hover{color:var(--ember);transform:scale(1.08)}
+    .mobile-survey-cta{display:none;align-items:center;gap:6px;position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:9000;background:var(--ember);color:var(--linen);font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:0.08em;padding:14px 30px;border:none;border-radius:999px;box-shadow:0 14px 34px -10px rgba(196,98,45,0.6);cursor:pointer;white-space:nowrap;transition:opacity 0.4s ease,transform 0.4s var(--ease-out)}
+    .mobile-survey-cta.hidden{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(24px)}
     #scroll-progress{position:fixed;top:0;left:0;width:100%;height:3px;z-index:10001;background:var(--ember);transform:scaleX(var(--sp,0));transform-origin:0 50%}
     @supports (animation-timeline: scroll()){#scroll-progress{animation:growX linear both;animation-timeline:scroll(root)}}
     @keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
@@ -172,13 +174,13 @@
     @keyframes cueDrop{0%{top:-50%}65%,100%{top:110%}}
 
     /* ═══════════ TICKER ═══════════ */
-    .ticker{background:#e8a84c;color:#221709;overflow:hidden;white-space:nowrap;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);position:relative;z-index:4;transition:background-color 1.4s ease;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+    .ticker{background:rgba(246,239,227,0.82);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);color:#221709;overflow:hidden;white-space:nowrap;border-top:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft);position:relative;z-index:4;transition:background-color 1.4s ease;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
     .ticker-track{display:inline-flex;align-items:center;padding:17px 0;animation:tickerMove 34s linear infinite;will-change:transform}
     .ticker:hover .ticker-track{animation-play-state:paused}
     @keyframes tickerMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .ticker-item{font-family:var(--fb);font-size:13px;font-weight:500;letter-spacing:0.26em;text-transform:uppercase;display:inline-flex;align-items:center}
     .ticker-item em{font-family:var(--fd);font-style:italic;font-weight:400;text-transform:none;letter-spacing:0.04em;color:var(--ember);margin-left:10px;font-size:15px}
-    .ticker-item::after{content:'✦';font-size:9px;color:#8f4520;margin:0 34px;opacity:0.75}
+    .ticker-item::after{content:'✦';font-size:9px;color:var(--ember);margin:0 34px;opacity:0.75}
 
     /* ═══════════ EMAIL BAR ═══════════ */
     .email-bar{background-color:var(--paper2);border-bottom:1px solid var(--rule-soft);padding:34px var(--px);display:flex;align-items:center;justify-content:center;gap:30px;flex-wrap:wrap;position:relative;z-index:4;transition:background-color 1.4s ease}
@@ -234,8 +236,8 @@
     .pillars-header{display:block;position:sticky;top:100px;grid-column:1;margin-bottom:0}
     .pillars-intro{font-size:15px;color:var(--ink2);line-height:1.85;padding:0;margin-top:22px}
     .pillar-grid{display:block;border-top:1px solid var(--rule);grid-column:2}
-    .pillar{display:grid;grid-template-columns:clamp(64px,7vw,110px) 1fr auto;align-items:center;gap:6px clamp(14px,2.5vw,40px);padding:clamp(22px,3vw,36px) clamp(8px,1.5vw,20px);border-bottom:1px solid var(--rule);background:transparent;border-radius:0;overflow:clip;transition:background-color 0.35s,padding-left 0.35s}
-    .pillar:hover{background-color:var(--paper2);padding-left:clamp(16px,2.2vw,32px)}
+    .pillar{display:grid;grid-template-columns:clamp(64px,7vw,110px) 1fr auto;align-items:center;gap:6px clamp(14px,2.5vw,40px);padding:clamp(22px,3vw,36px) clamp(8px,1.5vw,20px);border-bottom:1px solid var(--rule);background:transparent;border-radius:0;overflow:clip;transition:background-color 0.35s,transform 0.35s}
+    .pillar:hover{background-color:var(--paper2);transform:translateX(clamp(8px,1.5vw,18px))}
     .pillar-num{position:static;grid-row:1/3;align-self:center;font-family:var(--fd);font-weight:500;font-size:clamp(32px,4vw,58px);line-height:1;color:transparent;-webkit-text-stroke:1.2px rgba(196,98,45,0.75);pointer-events:none;transition:color 0.35s,-webkit-text-stroke-color 0.35s;font-variant-numeric:tabular-nums}
     .pillar:hover .pillar-num{color:var(--ember);-webkit-text-stroke-color:transparent}
     .pillar-icon{grid-column:3;grid-row:1/3;align-self:center;font-size:24px;margin:0;display:inline-flex;align-items:center;justify-content:center;width:62px;height:62px;border:1px solid var(--rule);border-radius:50%;background:var(--paper);pointer-events:none;transform:rotate(-8deg);transition:transform 0.5s var(--ease-spring),border-color 0.35s,background-color 0.35s}
@@ -302,14 +304,12 @@
     .gallery-grid:active{cursor:grabbing}
     .gallery-progress{height:2px;background:var(--rule-soft);margin:4px var(--px) 0;border-radius:2px;overflow:hidden}
     .gallery-progress span{display:block;height:100%;width:100%;background:var(--ember);transform:scaleX(0);transform-origin:left;transition:transform 0.1s linear}
-    .gallery-item{flex:0 0 clamp(270px,30vw,440px);height:clamp(350px,52vh,540px);position:relative;overflow:hidden;background-color:var(--paper2);border-radius:24px;cursor:pointer;border:1px solid var(--rule-soft);transition:flex-basis 0.45s var(--ease-out)}
+    .gallery-item{flex:0 0 clamp(270px,30vw,440px);height:clamp(350px,52vh,540px);position:relative;overflow:hidden;background-color:var(--paper2);border-radius:24px;cursor:pointer;border:1px solid var(--rule-soft);transition:transform 0.4s var(--ease-out),opacity 0.4s ease}
     .gallery-item.wide{flex-basis:clamp(380px,46vw,660px)}
     .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.9s var(--ease-out),filter 0.6s ease;filter:saturate(0.96);pointer-events:none}
     .gallery-item:hover img{filter:saturate(1.1);transform:scale(1.05)}
-    .gallery-grid:has(.gallery-item:hover) .gallery-item{flex-basis:clamp(220px,24vw,360px)}
-    .gallery-grid:has(.gallery-item:hover) .gallery-item.wide{flex-basis:clamp(300px,34vw,500px)}
-    .gallery-grid:has(.gallery-item:hover) .gallery-item:hover{flex-basis:clamp(380px,42vw,600px)}
-    .gallery-grid:has(.gallery-item:hover) .gallery-item.wide:hover{flex-basis:clamp(460px,52vw,760px)}
+    .gallery-grid:has(.gallery-item:hover) .gallery-item{transform:scale(0.93);opacity:0.74}
+    .gallery-grid:has(.gallery-item:hover) .gallery-item:hover{transform:scale(1.04);opacity:1;z-index:2}
     .gallery-item .caption{position:absolute;bottom:14px;left:14px;right:auto;padding:9px 18px;background:rgba(246,239,227,0.92);backdrop-filter:blur(6px);border-radius:999px;opacity:1;transform:none;transition:background-color 0.3s;z-index:2;pointer-events:none}
     .gallery-item .caption p{color:var(--ink);font-family:var(--fb);font-size:12.5px;font-weight:500;letter-spacing:0.05em;margin:0}
     .lightbox{display:none;position:fixed;inset:0;background:rgba(22,14,6,0.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);z-index:200000;justify-content:center;align-items:center;flex-direction:column}
@@ -393,12 +393,12 @@
     .science-point p{color:rgba(233,211,186,0.72)}
     .solar-arc-container{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:3;overflow:visible;opacity:0;transition:opacity 0.6s ease}
     body.circadian-mode .solar-arc-container{opacity:1}
-    .solar-path{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:min(80vw,100%);height:40vw;border:1px dashed rgba(255,218,194,0.1);border-radius:500px 500px 0 0;border-bottom:0}
-    .sun-orb{position:absolute;width:60px;height:60px;background:radial-gradient(circle at 38% 35%,#ffd9a0 0%,#ff9d3c 45%,#ff7b00 100%);border-radius:50%;bottom:0;left:0;transform:translate(-50%,50%);box-shadow:0 0 60px 22px rgba(255,123,0,0.4),0 0 140px 60px rgba(255,123,0,0.12);z-index:5}
+    .solar-path{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:min(80vw,100%);height:40vw;border:1px dashed rgba(255,218,194,0.1);border-radius:50% 50% 0 0 / 100% 100% 0 0;border-bottom:0}
+    .sun-orb{position:absolute;width:60px;height:60px;background:radial-gradient(circle at 38% 35%,#ffd9a0 0%,#ff9d3c 45%,#ff7b00 100%);border-radius:50%;top:0;left:0;transform:translate(-50%,-50%);box-shadow:0 0 60px 22px rgba(255,123,0,0.4),0 0 140px 60px rgba(255,123,0,0.12);z-index:5;will-change:transform}
     /* Kayan ay — roadmap bölümü, yalnız gece modunda (JS opacity kontrolü) */
     .lunar-arc-container{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:5;overflow:visible;opacity:0;transition:opacity 0.8s ease}
-    .lunar-path{position:absolute;top:14%;left:50%;transform:translateX(-50%);width:min(80vw,100%);height:22vw;max-height:210px}
-    .moon-orb{position:absolute;width:50px;height:50px;border-radius:50%;background:radial-gradient(circle at 38% 34%,#ffffff 0%,#eef2fb 42%,#cdd6ea 100%);bottom:0;left:0;transform:translate(-50%,50%);box-shadow:0 0 34px 10px rgba(205,221,255,0.5),0 0 90px 30px rgba(150,180,255,0.14);z-index:5}
+    .lunar-path{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:min(80vw,100%);height:40vw}
+    .moon-orb{position:absolute;width:50px;height:50px;border-radius:50%;background:radial-gradient(circle at 38% 34%,#ffffff 0%,#eef2fb 42%,#cdd6ea 100%);top:0;left:0;transform:translate(-50%,-50%);box-shadow:0 0 34px 10px rgba(205,221,255,0.5),0 0 50px 16px rgba(150,180,255,0.12);z-index:5;will-change:transform}
     .roadmap h2,.roadmap-grid{position:relative;z-index:1}
     #starfield-canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:1;opacity:0;transition:opacity 2s ease}
     body.circadian-mode #starfield-canvas{opacity:1}
@@ -449,7 +449,7 @@
 
     /* ═══════════ CTA - final spread ═══════════ */
     .cta-section{background:var(--paper2);padding:clamp(90px,13vw,150px) var(--px);position:relative;overflow:hidden;z-index:2;border-top:1px solid var(--rule-soft)}
-    .cta-section::after{content:'';position:absolute;width:46vw;height:46vw;bottom:-36%;left:-14%;border-radius:50%;background:radial-gradient(circle,rgba(196,98,45,0.08) 0%,transparent 62%);mix-blend-mode:multiply;pointer-events:none}
+    /* (cta-section ember glow kaldırıldı — footer köşesinde turuncu sızıntı yapıyordu) */
     .cta-figure{position:absolute;right:var(--px);top:50%;transform:translateY(-50%);width:min(30vw,430px);height:min(72%,540px);margin:0;border-radius:22px;overflow:hidden;box-shadow:0 46px 84px -48px rgba(34,23,9,0.5);z-index:1}
     .cta-figure::after{content:'';position:absolute;inset:0;border-radius:inherit;border:1px solid rgba(255,255,255,0.45);pointer-events:none}
     .cta-figure::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(to top,rgba(34,23,9,0.22),transparent 42%);z-index:1;pointer-events:none}
@@ -479,7 +479,7 @@
     @media(max-width:1100px){.cta-figure{display:none}.cta-row{max-width:none}}
 
     /* ═══════════ FOOTER ═══════════ */
-    footer{background-color:#fcfbf8;padding:64px var(--px) 46px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:22px;position:relative;z-index:2;overflow:hidden}
+    footer{background-color:#f1f1ef;padding:64px var(--px) 46px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:22px;position:relative;z-index:2;overflow:hidden}
     footer::before{content:'HEMHAL';position:absolute;left:50%;bottom:-22%;transform:translateX(-50%);font-family:var(--fd);font-weight:600;font-size:clamp(90px,16vw,210px);line-height:1;letter-spacing:0.1em;color:transparent;-webkit-text-stroke:1px rgba(34,23,9,0.08);pointer-events:none;white-space:nowrap}
     .footer-logo{font-family:var(--fd);font-weight:560;font-size:21px;color:var(--ink);letter-spacing:0.26em;cursor:pointer;transition:letter-spacing 0.5s var(--ease-out),color 0.4s;user-select:none;position:relative;z-index:2}
     .egg-hint{display:inline-block;margin-left:10px;color:var(--ember);opacity:0.45;cursor:pointer;transition:opacity 0.3s,transform 0.5s var(--ease-spring);user-select:none;font-size:13px}
@@ -638,8 +638,13 @@
       .roadmap-grid::before,.roadmap-card::before{display:none}
       .ticker-item{font-size:11.5px}
       .ticker-item::after{margin:0 22px}
-      .solar-path{width:min(90vw,100%);height:min(45vw,52%)}
+      .solar-path,.lunar-path{width:min(90vw,100%);height:min(45vw,52%)}
       .sun-orb{width:48px;height:48px;box-shadow:0 0 44px 16px rgba(255,123,0,0.4)}
+      .moon-orb{width:40px;height:40px}
+      .sun-orb,.moon-orb{transition:transform 0.06s ease-out}
+      .navbar-survey-btn{display:none}
+      .mobile-survey-cta{display:inline-flex}
+      .breath-invite{bottom:80px}
     }
     @media(max-width:560px){
       .email-bar{flex-direction:column;text-align:center;gap:14px}
@@ -656,8 +661,9 @@
       .science-points{grid-template-columns:1fr}
       #email-capture{width:min(72vw,280px)}
       h1{font-size:clamp(46px,15vw,72px)}
-      .solar-path{width:min(95vw,100%);height:min(48vw,52%);top:15%}
+      .solar-path,.lunar-path{width:min(95vw,100%);height:min(48vw,52%);top:15%}
       .sun-orb{width:36px;height:36px;box-shadow:0 0 28px 10px rgba(255,123,0,0.35)}
+      .moon-orb{width:34px;height:34px}
     }
 
     /* ═══════════ AZALTILMIS HAREKET ═══════════ */
@@ -1164,6 +1170,8 @@
     <p id="email-success" style="display:none;margin-top:12px;font-size:13px;color:var(--linen);background:rgba(0,0,0,0.3);padding:12px 16px;border-radius:4px;"></p>
   </section>
 
+  <button class="mobile-survey-cta" onclick="openSurvey('sticky')" aria-label="Ankete Katıl">Ankete Katıl →</button>
+
   <footer class="circadian-transition">
     <div class="footer-logo">HEMHAL</div>
     <div class="social-links">
@@ -1249,19 +1257,16 @@
 
       // progress: 0 = section henüz gelmedi, 1 = section tamamen geçti
       const p = (vh - rect.top) / (sH + vh);
-      const SUN_SPEED = sunIsMobile ? 3.2 : 1.7;   // mobil 3.2 (daha hızlı), masaüstü 1.7; 1 = eski
+      const SUN_SPEED = sunIsMobile ? 17.5 : 1.7;   // mobil 17.5 (1.3×↑), masaüstü 1.7 (dokunulmadı)
       const progress = Math.max(0, Math.min(1, (p - 0.5) * SUN_SPEED + 0.5));
       const rx = pathW / 2;
       const angle = Math.PI * (1 - progress); // π→0: sol'dan sağa
       const x = rx + Math.cos(angle) * rx;
       const y = pathH - Math.sin(angle) * pathH;
 
-      sunOrb.style.left = x + 'px';
-      sunOrb.style.bottom = (pathH - y) + 'px';
-      sunOrb.style.transform = 'translate(-50%, 50%)';
+      sunOrb.style.transform = 'translate(' + x + 'px,' + y + 'px) translate(-50%,-50%)';
     }
 
-    window.addEventListener('scroll', solarTick, { passive: true });
     solarTick();
 
     /* ─── KAYAN AY (gece modu, roadmap bölümü) — güneşten bağımsız ─── */
@@ -1276,9 +1281,10 @@
       const illum = (1 - Math.cos(2*Math.PI*age/syn)) / 2;   // 0=yeni ay, 1=dolunay
       const waxing = age < syn/2;                            // ay büyüyor mu
       const dia = moonOrb.offsetWidth || 50;
+      const f = dia / 50;                                    // glow'u ay boyutuyla orantıla (mobilde küçük ay → küçük hale; masaüstü f=1)
       const visIllum = 0.4 + 0.6*illum;                      // görünür taban: en az ~%40 aydınlık (her zaman net), yön gerçeğe uyar
       const off = (1 - visIllum) * dia * (waxing ? 1 : -1);  // karanlık bant; büyüyen ay'da karanlık solda → sağ aydınlık
-      moonOrb.style.boxShadow = '0 0 34px 10px rgba(205,221,255,0.5),0 0 90px 30px rgba(150,180,255,0.14),inset ' + off.toFixed(1) + 'px 0 3px 0 rgba(40,55,95,0.6)';
+      moonOrb.style.boxShadow = '0 0 ' + (34*f).toFixed(0) + 'px ' + (10*f).toFixed(0) + 'px rgba(205,221,255,0.5),0 0 ' + (50*f).toFixed(0) + 'px ' + (16*f).toFixed(0) + 'px rgba(150,180,255,0.12),inset ' + off.toFixed(1) + 'px 0 3px 0 rgba(40,55,95,0.6)';
     })();
     function lunarTick(){
       if (!roadmapSection || !moonOrb || !lunarPath) return;
@@ -1289,16 +1295,21 @@
       const pathW = lunarPath.offsetWidth, pathH = lunarPath.offsetHeight;
       if (!pathW || !pathH) return;
       const p = (vh - rect.top) / (sH + vh);
-      const SPEED = sunIsMobile ? 1.4 : 1.1;
+      const SPEED = sunIsMobile ? 21.5 : 2.2;   // ay güneşten hızlı; mobil 21.5 (1.3×↑), masaüstü 2.2 (dokunulmadı)
       const progress = Math.max(0, Math.min(1, (p - 0.5) * SPEED + 0.5));
       const rx = pathW / 2, angle = Math.PI * (1 - progress);
       const x = rx + Math.cos(angle) * rx, y = pathH - Math.sin(angle) * pathH;
-      moonOrb.style.left = x + 'px';
-      moonOrb.style.bottom = (pathH - y) + 'px';
-      moonOrb.style.transform = 'translate(-50%, 50%)';
+      moonOrb.style.transform = 'translate(' + x + 'px,' + y + 'px) translate(-50%,-50%)';
     }
-    window.addEventListener('scroll', lunarTick, { passive: true });
     lunarTick();
+
+    /* Güneş + ay: tek rAF-throttled scroll handler (P3 — layout thrashing'i azaltır) */
+    let _arcTicking = false;
+    window.addEventListener('scroll', () => {
+      if (_arcTicking) return;
+      _arcTicking = true;
+      requestAnimationFrame(() => { solarTick(); lunarTick(); _arcTicking = false; });
+    }, { passive: true });
 
     /* ─── KANVAS SİSTEMLERİ KURULUMU & OPTİMİZASYON ─── */
     const mCanvas = document.getElementById('mycelium-canvas');
@@ -1343,7 +1354,7 @@
 
       if (mCanvas) {
         mParticles = [];
-        const pCount = winW > 768 ? 70 : 35;
+        const pCount = winW > 768 ? 70 : 0;   // mobilde mycelium kapalı (perf)
         for (let i = 0; i < pCount; i++) {
           mParticles.push({ x: Math.random() * mCanvas.width, y: Math.random() * mCanvas.height, vx: (Math.random() - 0.5) * 0.6, vy: (Math.random() - 0.5) * 0.6 });
         }
@@ -1351,7 +1362,7 @@
 
       if (sCanvas) {
         stars = [];
-        const sCount = winW > 768 ? 75 : 30;
+        const sCount = winW > 768 ? 75 : 18;
         for (let i = 0; i < sCount; i++) {
           stars.push({ x: Math.random() * winW, y: Math.random() * winH, radius: Math.random() * 1.5, vx: (Math.random() - 0.5) * 0.2, vy: (Math.random() - 0.5) * 0.2 });
         }
@@ -1398,7 +1409,7 @@
         }
 
         // Ateş böcekleri - köyün biyoçeşitlilik hedefine selam
-        if (flies.length < 14 && Math.random() < 0.012) spawnFly();
+        if (flies.length < (winW > 768 ? 14 : 6) && Math.random() < 0.012) spawnFly();
         for (let i = flies.length - 1; i >= 0; i--) {
           const f = flies[i];
           f.phase += 0.03 + f.seed * 0.02;
@@ -1764,8 +1775,9 @@
 
       document.body.classList.add('ink-ready');
 
-      let sx=0.5, sy=0.5, psx=0.5, psy=0.5, wasInside=false;
+      let sx=0.5, sy=0.5, psx=0.5, psy=0.5, wasInside=false, inkRunning=false;
       function inkFrame(){
+        if (!inkRunning) return;
         if (inside && !wasInside){ sx=lmx; sy=lmy; psx=lmx; psy=lmy; }   // galeriye girince ışınla - dışarıdan içeri çizgi çekme
         wasInside = inside;
         sx += (lmx-sx)*0.55; sy += (lmy-sy)*0.55;   // hafif lerp: jitter'ı keser
@@ -1806,7 +1818,9 @@
         src = dst;
         requestAnimationFrame(inkFrame);
       }
-      requestAnimationFrame(inkFrame);
+      // P1: yalnız galeri ekrandayken çalıştır — PC'de sürekli WebGL yükünü keser
+      const inkObs = new IntersectionObserver((es)=>{ const vis=es[0].isIntersecting; if(vis && !inkRunning){ inkRunning=true; requestAnimationFrame(inkFrame); } else if(!vis){ inkRunning=false; } }, { threshold: 0 });
+      inkObs.observe(canvas);
     })();
 
     /* ─── Hero fonu: yalnız yumuşak dikey scroll süzülmesi (imleç parallax kaldırıldı - titretiyordu) ─── */
@@ -1880,7 +1894,7 @@
       if (!silent) showToast(manualNight ? '🌙 Sirkadiyen gece modu: açık' : '☀️ Sirkadiyen gece modu: kapalı');
       if (window.posthog) posthog.capture('night_toggle', { on: manualNight });
     }
-    try { if (localStorage.getItem('hemhalNight') === '1') toggleNightMode(true); } catch (err) {}
+    /* (gece modu artık KALICI DEĞİL — site her zaman gündüz başlar; gece yalnız manuel/oturumluk) */
 
     /* ─── Scroll ipucu: ilk kaydırmada söner ─── */
     const scrollCue = document.querySelector('.scroll-cue');
@@ -1959,44 +1973,28 @@
       });
     }
 
-    /* 4) "hemhal" yazmak → sözlük parlar */
-    let wordBuffer = '';
-    document.addEventListener('keydown', (e) => {
-      if (e.target.matches('input, textarea, select')) return;
-      if (e.key.length !== 1) return;
-      wordBuffer = (wordBuffer + e.key.toLowerCase()).slice(-6);
-      if (wordBuffer === 'hemhal') {
-        wordBuffer = '';
-        document.getElementById('sozluk')?.scrollIntoView({ behavior: 'smooth' });
-        const hw = document.querySelector('.dict-headword');
-        if (hw) {
-          hw.classList.remove('dict-flash');
-          setTimeout(() => hw.classList.add('dict-flash'), 400);
-          setTimeout(() => hw.classList.remove('dict-flash'), 3200);
-        }
-        showToast('📖 Kelimeyi buldun, sözlük tam burada.');
-        if (window.posthog) posthog.capture('easter_egg', { egg: 'word' });
-      }
-    });
+    /* (egg #4 "hemhal" yaz kaldırıldı — kullanıcı isteği) */
 
     /* (egg #5 otomatik gece selamı kaldırıldı — kullanıcı isteği) */
 
     /* 6) Footer'daki ✦ - egg ipuçlarını sırayla fısıldar */
     let eggHintIdx = 0;
     const eggHints = [
-      'İpucu 1/4: Bu sayfada bir yere "hemhal" yazmayı dene.',
-      'İpucu 2/4: Aşağıdaki HEMHAL yazısına 5 kez tıkla, gece açılır.',
-      'İpucu 3/4: Gece modundayken karanlığa tıkla; ateş böcekleri gelir.',
-      'İpucu 4/4: Bir süre hiç kıpırdama, Hemhal seninle nefes almak isteyecek.'
+      'Aşağıdaki HEMHAL yazısına 5 kez tıkla → gece modu açılır.',
+      'Gece modunda karanlığa tıkla → ateş böcekleri gelir.',
+      'Gece modunda faz bölümüne in → gökyüzünde ay süzülür.',
+      'Bir süre hiç kıpırdama → nefes molası (4 farklı teknik) belirir.',
+      'Aşağıdaki ay evresine tıkla → sonraki dolunaya kaç gün, söyler.'
     ];
     function eggHint() {
-      showToast('✦ ' + eggHints[eggHintIdx % eggHints.length]);
+      const i = eggHintIdx % eggHints.length;
+      showToast('✦ İpucu ' + (i + 1) + '/' + eggHints.length + ': ' + eggHints[i]);
       eggHintIdx++;
       if (window.posthog) posthog.capture('easter_egg', { egg: 'hint', n: eggHintIdx });
     }
 
     /* 7) Konsolu açan meraklılara */
-    console.log('%cHEMHAL%c\nKaynak kodu okuyan biri... tam bizim aradığımız merak.\nProjeyi birlikte şekillendirelim → https://hemhalkoy.com/#survey\niletisim@hemhalkoy.com\n\nGizli oyunlar: "hemhal" yaz · footer logosuna 5 tık · gecede karanlığa tıkla · kıpırdamadan bekle (nefes)',
+    console.log('%cHEMHAL%c\nKaynak kodu okuyan biri... tam bizim aradığımız merak.\nProjeyi birlikte şekillendirelim → https://hemhalkoy.com/#survey\niletisim@hemhalkoy.com\n\nGizli oyunlar: footer logosuna 5 tık · gece karanlığa tıkla · kıpırdamadan bekle (nefes) · pillar\'a tıkla · ay evresine tıkla · güneşe çift tık',
       'font-family:Georgia,serif;font-size:28px;letter-spacing:0.3em;color:#e8a84c;text-shadow:0 0 12px rgba(232,168,76,0.5)',
       'font-size:12px;color:#c4622d;line-height:1.7');
 
@@ -2037,7 +2035,7 @@
 
       function bStep(){ const ph=METHODS[curMethod].phases, p=ph[bPhase]; bOrb.style.transitionDuration=p.d+'ms'; bOrb.style.transform='scale('+p.s+')'; bCue.textContent=p.c; bTimer=setTimeout(()=>{ bPhase++; if(bPhase>=ph.length){ bPhase=0; bCycles++; if(bCycles>=METHODS[curMethod].cycles){ bStop(true); return; } } bStep(); }, p.d); }
       function bStart(){ bOpen=true; clearTimeout(bIdle); bInvite.classList.remove('show'); bOver.classList.add('show'); bSub.textContent=METHODS[curMethod].label; bPhase=0; bCycles=0; bOrb.style.transitionDuration='0ms'; bOrb.style.transform='scale(0.45)'; void bOrb.offsetWidth; bCue.textContent='Hazır…'; setTimeout(bStep,700); if(window.posthog)posthog.capture('easter_egg',{egg:'breath_open'}); }
-      function bStop(done){ clearTimeout(bTimer); bOver.classList.remove('show'); bOpen=false; if(done){ if(typeof showToast==='function')showToast('🫁 '+bCycles+' tur, sinir sistemin sana teşekkür ediyor.'); if(window.posthog)posthog.capture('easter_egg',{egg:'breath_done',cycles:bCycles}); } bArm(); }
+      function bStop(done){ clearTimeout(bTimer); bOver.classList.remove('show'); bOpen=false; if(done){ if(window.posthog)posthog.capture('easter_egg',{egg:'breath_done',cycles:bCycles}); } bArm(); }
       bInvite.addEventListener('click',bStart);
       bInvite.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); bStart(); }});
       bClose.addEventListener('click',()=>bStop(false));
@@ -2058,10 +2056,8 @@
     /* 9) Sekmeden ayrılınca başlık değişir - köy seni bekler */
     (function(){
       const orig = document.title;
-      const away = ['🌙 Köy seni bekliyor, komşu…','🔥 Ocak hâlâ yanıyor, dön','🌿 Hemhal sabırla bekliyor'];
-      let i = 0;
       document.addEventListener('visibilitychange', () => {
-        document.title = document.hidden ? away[i++ % away.length] : orig;
+        document.title = document.hidden ? '🌿 seni bekliyoruz' : orig;
       });
     })();
 
@@ -2085,22 +2081,7 @@
 
     /* (egg #11 hızlı-scroll uyarısı kaldırıldı — kullanıcı isteği) */
 
-    /* 12) Gün dönümü / ekinoks selamı - tarihe duyarlı (oturumda bir kez) */
-    (function(){
-      if (sessionStorage.getItem('hemhalMevsim')) return;
-      const d = new Date(), m = d.getMonth()+1, day = d.getDate();
-      const events = [
-        {m:3, d:20, t:'🌷 Bahar ekinoksu: gece ile gündüz eşitlendi. Yeni döngü.'},
-        {m:6, d:21, t:'☀️ Yaz gün dönümü: yılın en uzun günü. Güneşin zirvesi.'},
-        {m:9, d:22, t:'🍂 Sonbahar ekinoksu: denge günü. Hasat vakti.'},
-        {m:12, d:21, t:'❄️ Kış gün dönümü: yılın en uzun gecesi. İçe dönüş.'}
-      ];
-      const hit = events.find(ev => ev.m === m && Math.abs(ev.d - day) <= 1);
-      if (hit) {
-        sessionStorage.setItem('hemhalMevsim','1');
-        setTimeout(() => { if (typeof showToast === 'function') showToast(hit.t); if (window.posthog) posthog.capture('easter_egg',{egg:'solstice', m}); }, 3000);
-      }
-    })();
+    /* (egg #12 gün dönümü/ekinoks kaldırıldı — kullanıcı isteği) */
 
     /* 13) Form gönderince kıvılcım kutlaması (gündüz de görünür - spawnFly gece canvas'ında) */
     function celebrateSignup(){
@@ -2120,19 +2101,13 @@
       } catch(e){}
     }
 
-    /* 14) Pillar'a uzun bas → arkasındaki bilimsel temel (data-driven kanıt) */
+    /* 14) Pillar'a üzerine tıkla → arkasındaki bilimsel temel (data-driven kanıt) */
     (function(){
-      let t = null;
       document.querySelectorAll('.pillar[data-kaynak]').forEach(p => {
-        const start = () => { clearTimeout(t); t = setTimeout(() => {
-          if (typeof showToast === 'function') showToast('📚 ' + p.getAttribute('data-kaynak'));
+        p.addEventListener('click', () => {
+          if (typeof showToast === 'function') { const k = p.getAttribute('data-kaynak').replace(/^[^:]+:\s*/, ''); showToast(k.charAt(0).toUpperCase() + k.slice(1)); }
           if (window.posthog) posthog.capture('easter_egg', { egg: 'pillar_source' });
-        }, 600); };
-        const cancel = () => clearTimeout(t);
-        p.addEventListener('pointerdown', start);
-        p.addEventListener('pointerup', cancel);
-        p.addEventListener('pointercancel', cancel);
-        p.addEventListener('pointerleave', cancel);
+        });
       });
     })();
 
@@ -2172,43 +2147,21 @@
       });
     })();
 
-    /* 17) "köy" yaz → galeri ışıkları yanar */
-    (function(){
-      let kbuf = '';
-      document.addEventListener('keydown', (e) => {
-        if (e.target.matches('input, textarea, select')) return;
-        if (e.key.length !== 1) return;
-        kbuf = (kbuf + e.key.toLowerCase()).slice(-3);
-        if (kbuf === 'köy') {
-          kbuf = '';
-          document.querySelectorAll('.gallery-item').forEach((g, i) => {
-            setTimeout(() => { g.classList.remove('koy-glow'); void g.offsetWidth; g.classList.add('koy-glow'); setTimeout(() => g.classList.remove('koy-glow'), 1600); }, i * 70);
-          });
-          if (typeof showToast === 'function') showToast('🏘️ Köyün ışıkları yandı.');
-          if (window.posthog) posthog.capture('easter_egg', { egg: 'village' });
-        }
-      });
-    })();
+    /* (egg #17 "köy" yaz kaldırıldı — kullanıcı isteği) */
 
-    /* Egg #3: 🔥 Ortak Meydan kartına tıkla → topluluk ateşi yükselir */
+    /* (egg #3 topluluk ateşi kaldırıldı — kullanıcı isteği) */
+
+    /* Sticky mobil anket CTA — hero/CTA bölümü görünürken gizle (çakışma olmasın) */
     (function(){
-      const card = Array.from(document.querySelectorAll('.space-card')).find(c => /Ortak Meydan/.test(c.textContent));
-      if (!card) return;
-      card.addEventListener('click', () => {
-        const r = card.getBoundingClientRect(), cx = r.left + r.width/2, cy = r.top + r.height*0.74;
-        for (let i=0;i<24;i++){
-          const p = document.createElement('div'); p.className = 'spark';
-          const ang = -Math.PI/2 + (Math.random()-0.5)*1.0, dist = 80 + Math.random()*170;
-          p.style.left = cx + 'px'; p.style.top = cy + 'px';
-          p.style.setProperty('--dx', Math.round(Math.cos(ang)*dist) + 'px');
-          p.style.setProperty('--dy', Math.round(Math.sin(ang)*dist) + 'px');
-          p.style.animationDelay = (Math.random()*0.2).toFixed(2) + 's';
-          document.body.appendChild(p);
-          setTimeout(() => p.remove(), 1700);
-        }
-        if (typeof showToast === 'function') showToast('🔥 Topluluk ateşi yandı.');
-        if (window.posthog) posthog.capture('easter_egg', { egg: 'community_fire' });
-      });
+      const cta = document.querySelector('.mobile-survey-cta');
+      if (!cta) return;
+      const watch = [document.getElementById('hero-section'), document.getElementById('survey')].filter(Boolean);
+      const vis = new Set();
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) vis.add(e.target); else vis.delete(e.target); });
+        cta.classList.toggle('hidden', vis.size > 0);
+      }, { threshold: 0.05 });
+      watch.forEach(el => io.observe(el));
     })();
 
     initNavTracking();
