@@ -641,7 +641,7 @@
       .solar-path,.lunar-path{width:min(90vw,100%);height:min(45vw,52%)}
       .sun-orb{width:48px;height:48px;box-shadow:0 0 44px 16px rgba(255,123,0,0.4)}
       .moon-orb{width:40px;height:40px}
-      .sun-orb,.moon-orb{transition:transform 0.06s ease-out}
+      .sun-orb,.moon-orb{transition:transform 0.12s ease-out}
       .navbar-survey-btn{display:none}
       .mobile-survey-cta{display:inline-flex}
       .breath-invite{bottom:80px}
@@ -1225,10 +1225,12 @@
     let manualNight = false;   // footer logosu easter egg ile kalici gece
     const sunIsMobile = window.matchMedia('(max-width: 768px)').matches;   // mobilde gunes daha hizli supurur
 
+    let vhRef = window.innerHeight;   // sabit vh — mobil adres çubuğu kayınca innerHeight değişip orb'u zıplatmasın
+    window.addEventListener('orientationchange', () => { vhRef = window.innerHeight; });
     function solarTick() {
       if (!scienceSection) return;
       const rect = scienceSection.getBoundingClientRect();
-      const vh = window.innerHeight;
+      const vh = vhRef;
       const sH = rect.height;
 
       // Kaç px görünür
@@ -1257,7 +1259,7 @@
 
       // progress: 0 = section henüz gelmedi, 1 = section tamamen geçti
       const p = (vh - rect.top) / (sH + vh);
-      const SUN_SPEED = sunIsMobile ? 17.5 : 1.7;   // mobil 17.5 (1.3×↑), masaüstü 1.7 (dokunulmadı)
+      const SUN_SPEED = sunIsMobile ? 2.2 : 1.7;   // mobil 2.2 (makul taban — gerçek mobilde kalibre), masaüstü 1.7
       const progress = Math.max(0, Math.min(1, (p - 0.5) * SUN_SPEED + 0.5));
       const rx = pathW / 2;
       const angle = Math.PI * (1 - progress); // π→0: sol'dan sağa
@@ -1288,14 +1290,14 @@
     })();
     function lunarTick(){
       if (!roadmapSection || !moonOrb || !lunarPath) return;
-      const rect = roadmapSection.getBoundingClientRect(), vh = window.innerHeight, sH = rect.height;
+      const rect = roadmapSection.getBoundingClientRect(), vh = vhRef, sH = rect.height;
       const isInView = rect.top < vh && rect.bottom > 0;
       if (lunarContainer) lunarContainer.style.opacity = (isNightMode && isInView) ? '1' : '0';
       if (!isNightMode || !isInView) return;
       const pathW = lunarPath.offsetWidth, pathH = lunarPath.offsetHeight;
       if (!pathW || !pathH) return;
       const p = (vh - rect.top) / (sH + vh);
-      const SPEED = sunIsMobile ? 21.5 : 2.2;   // ay güneşten hızlı; mobil 21.5 (1.3×↑), masaüstü 2.2 (dokunulmadı)
+      const SPEED = sunIsMobile ? 2.6 : 2.2;   // ay güneşten biraz hızlı; mobil 2.6 (makul taban), masaüstü 2.2
       const progress = Math.max(0, Math.min(1, (p - 0.5) * SPEED + 0.5));
       const rx = pathW / 2, angle = Math.PI * (1 - progress);
       const x = rx + Math.cos(angle) * rx, y = pathH - Math.sin(angle) * pathH;
